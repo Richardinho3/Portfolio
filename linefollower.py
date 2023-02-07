@@ -1,4 +1,4 @@
-#!/usr/bin/env pybricks-micropython
+
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
                                  InfraredSensor, UltrasonicSensor, GyroSensor)
@@ -8,8 +8,7 @@ from pybricks.robotics import DriveBase
 from pybricks.media.ev3dev import SoundFile, ImageFile
 
 
-# This program requires LEGO EV3 MicroPython v2.0 or higher.
-# Click "Open user guide" on the EV3 extension tab for more information.
+
 left_color = ColorSensor(Port.S2)
 right_color = ColorSensor(Port.S1)
 left_sonic = UltrasonicSensor(Port.S3)
@@ -17,7 +16,7 @@ gyro = GyroSensor(Port.S4)
 
 
 
-# Create your objects here.
+
 ev3 = EV3Brick()
 left_motor = Motor(Port.B)
 right_motor = Motor(Port.C)
@@ -27,7 +26,7 @@ def stop():
     left_motor.brake()
     right_motor.brake()
 
-# Write your program here.
+
 while True:
     robot.drive(500, 0)
     if left_color.reflection() <= 8:
