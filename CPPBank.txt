@@ -1,0 +1,71 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <algorithm>
+#include <cmath>
+#include <ctgmath>
+using namespace std;
+
+int main() {
+    string num;
+    int day0;
+    float cint, dint, acc, cmultiplier, dmultiplier;
+    day0 = -1;
+    acc = 0;
+    cmultiplier = 0;
+    dmultiplier = 0;
+//interest rates
+    cout << "Enter credit interest rate [%]:\n";
+    cin >> cint;
+    cout << "Enter debet interest rate [%]:\n";
+    cin >> dint;
+
+
+    // day number, transaction amount
+    cout << "Enter transactions:\n";
+
+    while(true) {
+
+
+        cin >> num;
+        std::string input = num;
+
+
+        std::replace(input.begin(), input.end(), ',', ' '); //put spaces instead to hadle it easier
+        std::stringstream stream(input);
+
+        float day, cash;
+
+        stream >> day >> cash;
+
+        if (day <= day0) {
+            cout << "Invalid input\n" << ("Balance: ");
+            printf( "%.2f", acc);
+
+            break;
+            }
+        day0 = day;
+        acc = acc + cash;
+        //termination
+        if (cash == 0){
+            cout << ("Balance: ");
+            printf( "%.2f", acc);
+
+            break;
+
+        }
+        //Implementing interest rate
+        if (acc<0) {
+            dmultiplier = (dint * cash);
+            acc = acc - dmultiplier;
+        }
+        else if (acc>0) {
+            cmultiplier = (cint * cash);
+            acc = acc + cmultiplier;
+        }
+
+    }
+
+
+
+}
